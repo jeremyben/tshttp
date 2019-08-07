@@ -1,0 +1,21 @@
+{
+	"name": "@tshttp/status",
+	"version": "0.0.0",
+	"keywords": [
+		"http",
+		"status",
+		"reason",
+		"typed",
+		"typescript"
+	],
+	"main": "index.js",
+	"types": "index.d.ts",
+	"dependencies": {},
+	"devDependencies": {},
+	"scripts": {
+		"build": "node ../build.js",
+		"prepublishOnly": "yarn run build",
+		"test": "jest --config ../jest.config.js",
+		"test:watch": "jest --config ../jest.config.js --watchAll --verbose false"
+	}
+}
