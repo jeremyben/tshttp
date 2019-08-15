@@ -9,7 +9,8 @@
 		"url": "https://github.com/jeremyben/tshttp"
 	},
 	"workspaces": [
-		"status"
+		"status",
+		"error"
 	],
 	"engines": {
 		"node": ">=8.10"

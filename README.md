@@ -7,3 +7,4 @@ _Low-Level_ TypeScript HTTP-related Modules. Inspired by [jshttp](https://jshttp
 ### [@tshttp/status](./packages/status)
   
 
+### [@tshttp/error](./packages/error)
