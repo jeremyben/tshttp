@@ -108,6 +108,15 @@ const HttpError = makeNewOptional(
 			this.status = status
 			this.name = ErrorReason[status]
 			this.message = message
+
+			// Remove constructor call from stack trace (only work when instantiated with `new`).
+			// https://v8.dev/docs/stack-trace-api#stack-trace-collection-for-custom-exceptions
+			Error.captureStackTrace(this, HttpError)
+
+			// Stringify message in stack trace if necessary
+			if (this.stack && typeof message === 'object') {
+				this.stack = this.stack.replace('[object Object]', JSON.stringify(message))
+			}
 		}
 
 		/**
