@@ -1,6 +1,6 @@
 {
 	"name": "@tshttp/error",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"keywords": [
 		"http",
 		"error",
@@ -9,7 +9,6 @@
 	],
 	"main": "index.js",
 	"types": "index.d.ts",
-	"dependencies": {},
 	"devDependencies": {
 		"@types/express": "^4.17.0",
 		"express": "^4.17.1"
