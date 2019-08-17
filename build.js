@@ -63,6 +63,10 @@ function bundleDefinitions(release = '') {
 			},
 			extractorMessageReporting: {
 				default: logLevel.warning,
+				'ae-missing-release-tag': logLevel.error,
+				'ae-extra-release-tag': logLevel.error,
+				'ae-incompatible-release-tags': logLevel.error,
+				'ae-different-release-tags': logLevel.error,
 				'ae-internal-missing-underscore': logLevel.none,
 				'ae-unresolved-inheritdoc-reference': logLevel.none,
 			},
@@ -105,7 +109,7 @@ function copyPackageInfos() {
 	pkgDist.license = pkgRoot.license
 	pkgDist.engines = pkgRoot.engines
 	pkgDist.engineStrict = pkgRoot.engineStrict
-	pkgDist.repository = { ...pkgRoot.repository, directory: basename(basePath) }
+	pkgDist.repository = `${pkgRoot.repository}/tree/master/${basename(basePath)}`
 	pkgDist.publishConfig = { access: 'public' }
 	pkgDist.files = ['**/*.js', '**/*.d.ts']
 

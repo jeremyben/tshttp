@@ -4,10 +4,7 @@
 	"author": "Jeremy Bensimon",
 	"license": "MIT",
 	"private": true,
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/jeremyben/tshttp"
-	},
+	"repository": "https://github.com/jeremyben/tshttp",
 	"workspaces": [
 		"status",
 		"error"
@@ -21,7 +18,7 @@
 		"test": "lerna run test --stream",
 		"build": "lerna run build --stream",
 		"release": "lerna version",
-		"npm": "lerna publish --contents dist"
+		"npm": "lerna publish from-package --contents dist"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^8.1.0",
