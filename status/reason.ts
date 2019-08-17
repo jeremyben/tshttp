@@ -14,6 +14,25 @@ import { Status } from './status'
  * @public
  */
 export function reason(status: StatusU): string {
-	const phrase = Status[status]
-	return phrase.replace(/(?!^)([A-Z])/gm, ' $1')
+	// Handle edge cases with ponctuations or caps
+	switch (status) {
+		case 200:
+			return 'OK'
+		case 203:
+			return 'Non-Authoritative Information'
+		case 207:
+			return 'Multi-Status'
+		case 226:
+			return 'IM Used'
+		case 414:
+			return 'URI Too Long'
+		case 418:
+			return "I'm a teapot"
+		case 505:
+			return 'HTTP Version Not Supported'
+		default:
+			// Returns empty string if status is not known (not allowed by the compiler)
+			const phrase = Status[status] || ''
+			return phrase.replace(/(?!^)([A-Z])/gm, ' $1')
+	}
 }
