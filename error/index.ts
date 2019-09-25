@@ -106,7 +106,7 @@ const HttpError = makeNewOptional(
 		constructor(status: T, message: M = '' as any) {
 			super()
 			this.status = status
-			this.name = ErrorReason[status]
+			this.name = ErrorReason[status] || 'HTTP Error' // if some dude bypasses the compiler
 			this.message = message
 
 			// Remove constructor call from stack trace (only work when instantiated with `new`).
