@@ -1,4 +1,4 @@
-# @tshttp/status
+# `@tshttp/status` 🎰
 
 Ultra **typed**, over **documented**, and neatly **organised** HTTP status enums, to use for a great developper experience.
 
@@ -40,7 +40,7 @@ Simply add `U` to enums to get them.
 import { StatusU, RedirectionStatusU } from '@tshttp/status'
 
 function redirect(status: RedirectionStatusU, url: string) {
-    //...
+  // ...
 }
 ```
 
@@ -51,8 +51,8 @@ A simple method called `reason` transforms a status code into its human readable
 ```ts
 import { reason, ErrorStatus} from '@tshttp/status'
 
-reason(200) // "Ok"
+reason(200) // "OK"
 reason(301) // "Moved Permanently"
 reason(404) // "Not Found"
-reason(ErrorStatus.InternalServerError) // "Internal Server Error"
+reason(ErrorStatus.ImATeapot) // "I'm a teapot"
 ```

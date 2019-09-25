@@ -1,4 +1,4 @@
-# @tshttp/header
+# `@tshttp/header` 📰
 
 Ultra **typed**, over **documented**, and neatly **organised** HTTP header enums, to use for a great developper experience.
 

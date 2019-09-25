@@ -1,4 +1,4 @@
-# @tshttp/error
+# `@tshttp/error` 💢
 
 The ultimate HTTP error to throw. **Neat** with a simple and small API surface, highly and precisely **typed**.
 
