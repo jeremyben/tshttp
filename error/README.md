@@ -1,6 +1,6 @@
 # `@tshttp/error` 💢
 
-The ultimate HTTP error to throw. **Neat** with a simple and small API surface, highly and precisely **typed**.
+The ultimate HTTP error to `throw`.<br>Neat with a **simple** and small API surface, highly **typed**.
 
 ## Get started
 
@@ -13,18 +13,47 @@ npm install @tshttp/error
 import HttpError from '@tshttp/error'
 
 throw new HttpError(400)
-throw new HttpError(500, 'My bad')
+throw new HttpError(500, 'My bad') // with optional message
 ```
 
-`HttpError` requires an known error status code as first argument.
+## `name` inference
 
-You can pass a `message` of any form as a second argument, that will be stringified if necessary with the inherited `toString()` method.
+HttpError requires an known error status code to accurately infer its `name` property: e.g. "Not Found" for 404.
 
-The error `name` property will be inferred as the usual reason phrase associated with the code (e.g. "Not Found" for 404).
+If you bypass the compiler and use a unknown error status code, the error `name` will simply be "HTTP Error".
 
-## Using status enum
+## `message` stringification
 
-If you prefer status names instead of status codes, you can use the `ErrorStatus` enum (or even the `Status` enum) from the companion lib [@tshttp/status](../status).
+You can pass a `message` of any form as a second argument. It will be stringified if necessary, either in the error stack or with the `toString()` method.
+
+```ts
+throw new HttpError(400, {about: 'thing'})
+```
+
+gives the following stack trace :
+
+```sh
+Bad Request: {"about":"thing"} # instead of "Error: [Object object]"
+    at ...
+```
+
+## Compatible with your framework
+
+HttpError adds a `status` property that will be parsed, for example, by [Express](https://expressjs.com/) error handler to properly set the HTTP response status.
+
+## Hate the `new` keyword ?
+
+You can instantiate `HttpError` with or without the `new` keyword, just like the built-in `Error` object.
+
+```ts
+throw HttpError(401)
+```
+
+The compiler is okay with both.
+
+## Status enum 💡
+
+You want words instead of codes ? Use `ErrorStatus` enum from the companion library: **[@tshttp/status](../status)**.
 
 ```ts
 import HttpError from '@tshttp/error'
@@ -38,12 +67,4 @@ const someOtherMiddleware = (req, res, next) => {
     const forbidden = new HttpError(Status.Forbidden, { tryTo: 'read', on: 'user' })
     next(forbidden)
 }
-```
-
-## Hate the `new` keyword ?
-
-You can instantiate `HttpError` with or without the `new` keyword, just like the built-in `Error` object.
-
-```ts
-throw HttpError(401)
 ```

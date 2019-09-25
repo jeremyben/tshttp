@@ -1,6 +1,7 @@
 {
 	"name": "@tshttp/error",
 	"version": "1.0.0",
+	"description": "The ultimate HTTP Error to throw.",
 	"keywords": [
 		"http",
 		"error",
