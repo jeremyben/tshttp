@@ -124,7 +124,7 @@ const HttpError = makeNewOptional(
 		 * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/toString
 		 */
 		toString() {
-			if (!this.message) return this.name
+			if (this.message == null) return this.name
 			const message = typeof this.message === 'string' ? this.message : JSON.stringify(this.message)
 			return `${this.name}: ${message}`
 		}
