@@ -4,12 +4,14 @@ import HttpError from '.'
 
 test('express default error handling', (done) => {
 	const server = express()
-		.get('', (req, res, next) => {
-			throw HttpError(400, { foo: 'bar' })
-		})
-		.listen(3000)
+		.get('/', (req, res, next) => {
+			const err = HttpError(400, { foo: 'bar' })
 
-	request({ hostname: 'localhost', port: 3000, method: 'GET' }, (res: IncomingMessage) => {
+			throw err
+		})
+		.listen(3099, 'localhost')
+
+	request({ hostname: 'localhost', port: 3099, method: 'GET', path: '/' }, (res: IncomingMessage) => {
 		expect(res.statusCode).toBe(400)
 
 		res.on('data', (data: Buffer) => {
