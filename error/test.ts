@@ -1,6 +1,6 @@
 import { request, IncomingMessage } from 'http'
 import express from 'express'
-import HttpError from '.'
+import { HttpError } from '.'
 
 test('express default error handling', (done) => {
 	const server = express()

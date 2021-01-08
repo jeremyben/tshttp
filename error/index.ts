@@ -4,7 +4,7 @@ import { makeNewOptional } from './utils'
  * @see https://tools.ietf.org/html/rfc2616#section-10.4
  * @see https://tools.ietf.org/html/rfc2616#section-10.5
  * @enum
- * @internal
+ * @public
  */
 const ErrorReason = <const>{
 	// Client errors
@@ -53,7 +53,14 @@ const ErrorReason = <const>{
 	511: 'Network Authentication Required',
 }
 
+/**
+ * @public
+ */
 type ErrorReason = typeof ErrorReason
+
+/**
+ * @public
+ */
 type ErrorStatus = keyof ErrorReason
 
 /**
@@ -80,7 +87,7 @@ type ErrorStatus = keyof ErrorReason
  * @class
  * @public
  */
-const HttpError = makeNewOptional(
+export const HttpError = makeNewOptional(
 	// tslint:disable-next-line: no-shadowed-variable
 	class HttpError<T extends ErrorStatus, M extends any = string> extends Error {
 		readonly status: T
@@ -131,6 +138,10 @@ const HttpError = makeNewOptional(
 	}
 )
 
-type HttpError = InstanceType<typeof HttpError>
+export type HttpError = InstanceType<typeof HttpError>
 
-export default HttpError
+declare global {
+	namespace TshttpError {
+		interface Message {}
+	}
+}

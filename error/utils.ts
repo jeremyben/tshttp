@@ -14,7 +14,7 @@ export function makeNewOptional<C extends new (...args: any[]) => any>(class_: C
 		apply(target, this_, args) {
 			return new target(...args)
 		},
-	}) as (C & NoNew<C>)
+	}) as C & NoNew<C>
 
 	if (constructorName) Object.defineProperty(proxy, 'name', { value: constructorName })
 

@@ -10,7 +10,7 @@ npm install @tshttp/error
 ```
 
 ```ts
-import HttpError from '@tshttp/error'
+import { HttpError } from '@tshttp/error'
 
 throw new HttpError(400)
 throw new HttpError(500, 'My bad') // with optional message
@@ -56,8 +56,8 @@ The compiler is okay with both.
 You want words instead of codes ? Use `ErrorStatus` enum from the companion library: **[@tshttp/status](../status)**.
 
 ```ts
-import HttpError from '@tshttp/error'
-import Status, { ErrorStatus } from '@tshttp/status'
+import { HttpError } from '@tshttp/error'
+import { Status, ErrorStatus } from '@tshttp/status'
 
 const someMiddleware = (req, res, next) => {
     throw new HttpError(ErrorStatus.BadRequest, 'foo is required')
