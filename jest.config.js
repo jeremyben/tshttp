@@ -1,6 +1,6 @@
 const rootDir = process.cwd()
 
-/** @type {jest.InitialOptions} */
+/** @type {import('@jest/types').Config.InitialOptions} */
 const config = {
 	rootDir,
 	preset: 'ts-jest',
