@@ -18,8 +18,8 @@
 		"bootstrap": "yarn install --force",
 		"test": "lerna run test --stream",
 		"build": "lerna run build --stream",
-		"release": "lerna version",
-		"npm": "lerna publish from-package --contents dist"
+		"release:version": "lerna version",
+		"release:publish": "lerna publish from-package --contents dist"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^11.0.0",
