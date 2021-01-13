@@ -3,6 +3,7 @@ const { basename, join } = require('path')
 const { build } = require('tsc-prog')
 
 const basePath = process.cwd()
+const folderName = basename(basePath)
 const distPath = join(basePath, 'dist')
 
 build({
@@ -18,7 +19,7 @@ build({
 	exclude: ['**/__tests__', '**/*.test.ts', '**/test.ts', 'node_modules', 'dist'],
 	copyOtherToOutDir: true,
 	clean: { outDir: true },
-	bundleDeclaration: { entryPoint: 'index.d.ts' },
+	bundleDeclaration: folderName !== 'error' && { entryPoint: 'index.d.ts' },
 })
 
 console.log('Copying licence and package properties')
@@ -36,7 +37,7 @@ pkgDist.author = pkgRoot.author
 pkgDist.license = pkgRoot.license
 pkgDist.engines = pkgRoot.engines
 pkgDist.engineStrict = pkgRoot.engineStrict
-pkgDist.repository = `${pkgRoot.repository}/tree/master/${basename(basePath)}`
+pkgDist.repository = `${pkgRoot.repository}/tree/master/${folderName}`
 pkgDist.publishConfig = { access: 'public' }
 pkgDist.files = ['**/*.js', '**/*.d.ts']
 

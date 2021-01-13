@@ -10,7 +10,8 @@
 			"ban-keywords",
 			"check-format",
 			"allow-pascal-case",
-			"allow-trailing-underscore"
+			"allow-trailing-underscore",
+			"allow-leading-underscore"
 		],
 		"interface-name": [true, "never-prefix"],
 		"no-implicit-dependencies": [true, "dev"],
@@ -24,6 +25,9 @@
 		"curly": [true, "ignore-same-line"],
 		"array-type": [true, "array-simple"],
 		"prefer-object-spread": false,
+		"callable-types": false,
+		"no-empty-interface": false,
+		"no-namespace": false,
 		"ban-types": [
 			true,
 			["Object", "Did you mean `object`?"],
