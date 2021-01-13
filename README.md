@@ -7,7 +7,7 @@ _Low-Level_ TypeScript HTTP-related Modules. Inspired by [jshttp](https://jshttp
 ### [@tshttp/status](./status)
 
 ```ts
-import Status from '@tshttp/status'
+import { Status } from '@tshttp/status'
 
 res.status(Status.Created)
 ```
@@ -17,9 +17,9 @@ res.status(Status.Created)
 ### [@tshttp/header](./header)
 
 ```ts
-import Header from '@tshttp/header'
+import { ResponseHeader } from '@tshttp/header'
 
-res.set(Header.ContentType, 'application/json')
+res.set(ResponseHeader.ContentType, 'application/json')
 ```
 
 ---
@@ -27,7 +27,8 @@ res.set(Header.ContentType, 'application/json')
 ### [@tshttp/error](./error)
 
 ```ts
-import HttpError from '@tshttp/error'
+import { HttpError } from '@tshttp/error'
 
-throw HttpError(400)
+throw HttpError(400, 'Nope')
+throw HttpError.Forbidden('Access Denied')
 ```

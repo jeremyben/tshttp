@@ -10,14 +10,14 @@ npm install @tshttp/status
 ```
 
 ```ts
-import Status from '@tshttp/status'
+import { Status } from '@tshttp/status'
 
 res.sendStatus(Status.Created)
 ```
 
-## Categorized enums
+## Enums
 
-`Status` enum is the default export and is composed of the following enums :
+`Status` enum is composed of the following exported enums:
 
 - `InformationStatus` for **1xx** responses.
 - `SuccessStatus` for **2xx** responses.
@@ -26,20 +26,21 @@ res.sendStatus(Status.Created)
 
 ```ts
 import { ErrorStatus } from '@tshttp/status'
-import HttpError from '@tshttp/error'
+import { HttpError } from '@tshttp/error'
 
 throw HttpError(ErrorStatus.Forbidden)
 ```
 
+_These enums are actually object litterals with a `const` assertion.`_
+
 ## Unions
 
-Union types are provided generically and for each category.
-Simply add `U` to enums to get them.
+When use as a type, each category is a union of corresponding status codes.
 
 ```ts
-import { StatusU, RedirectionStatusU } from '@tshttp/status'
+import { RedirectionStatus } from '@tshttp/status'
 
-function redirect(status: RedirectionStatusU, url: string) {
+function redirect(status: RedirectionStatus, url: string) {
   // ...
 }
 ```
@@ -49,7 +50,7 @@ function redirect(status: RedirectionStatusU, url: string) {
 A simple method called `reason` transforms a status code into its human readable reason phrase :
 
 ```ts
-import { reason, ErrorStatus} from '@tshttp/status'
+import { reason, ErrorStatus } from '@tshttp/status'
 
 reason(200) // "OK"
 reason(301) // "Moved Permanently"

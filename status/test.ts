@@ -1,12 +1,4 @@
-import { listUnionLiterals } from '../testing'
-import Status, { reason } from '.'
-
-test('union and enum parity', () => {
-	const unionCodes = listUnionLiterals<number>('./union.ts', 'StatusU')
-	const enumCodes = Object.values(Status).filter((s: any) => Number.isInteger(s)) as number[]
-
-	expect(unionCodes).toEqual(enumCodes)
-})
+import { reason } from '.'
 
 test('reason phrase', () => {
 	expect(reason(200)).toBe('OK')

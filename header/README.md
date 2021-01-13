@@ -10,14 +10,14 @@ npm install @tshttp/header
 ```
 
 ```ts
-import Header from '@tshttp/header'
+import { Header } from '@tshttp/header'
 
 req.header(Header.ContentType)
 ```
 
-## Categorized enums
+## Enums
 
-`Header` enum is the default export and is composed of the following enums:
+`Header` enum is composed of the following exported enums:
 
 - `RequestHeader` for the HTTP request headers.
 - `ResponseHeader` for the HTTP response headers.
@@ -29,15 +29,16 @@ req.get(RequestHeader.XForwardedFor)
 res.set(ResponseHeader.Allow, 'GET')
 ```
 
+_These enums are actually object litterals with a `const` assertion.`_
+
 ## Unions
 
-Union types are provided generically and for each category.
-Simply add `U` to enums to get them.
+When use as a type, each category is a union of corresponding headers.
 
 ```ts
-import { HeaderU, ResponseHeaderU } from '@tshttp/status'
+import { Header, ResponseHeader } from '@tshttp/status'
 
-function setHeader(name: ResponseHeaderU, value: string) {
+function setHeader(name: ResponseHeader, value: string) {
   //...
 }
 ```

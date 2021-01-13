@@ -1,4 +1,3 @@
-import { StatusU } from './union'
 import { Status } from './status'
 
 /**
@@ -8,12 +7,13 @@ import { Status } from './status'
  *
  * A client SHOULD ignore the reason-phrase content.
  *
- * @see https://tools.ietf.org/html/rfc7230#section-3.1.2
- * @see https://tools.ietf.org/html/rfc2616#section-6.1.1
+ * https://tools.ietf.org/html/rfc7230#section-3.1.2
+ *
+ * https://tools.ietf.org/html/rfc2616#section-6.1.1
  *
  * @public
  */
-export function reason(status: StatusU): string {
+export function reason(status: Status): string {
 	// Handle edge cases with ponctuations or caps
 	switch (status) {
 		case 200:
@@ -32,7 +32,9 @@ export function reason(status: StatusU): string {
 			return 'HTTP Version Not Supported'
 		default:
 			// Returns empty string if status is not known (not allowed by the compiler)
-			const phrase = Status[status] || ''
+			const phrase =
+				Object.keys(Status).find((key) => Status[key as keyof typeof Status] === status) || ''
+
 			return phrase.replace(/(?!^)([A-Z])/gm, ' $1')
 	}
 }
