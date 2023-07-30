@@ -1,5 +1,8 @@
 # `@tshttp/status` 🎰
 
+> [!WARNING]  
+> This package is deprecated. Please head to its successor: **[@reflet/http](https://github.com/jeremyben/reflet/tree/master/http)**
+
 Ultra **typed**, over **documented**, and neatly **organised** HTTP status enums, to use for a great developper experience.
 
 ## Get started

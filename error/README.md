@@ -1,5 +1,8 @@
 # `@tshttp/error` 💢
 
+> [!WARNING]  
+> This package is deprecated. Please head to its successor: **[@reflet/http](https://github.com/jeremyben/reflet/tree/master/http)**
+
 The ultimate HTTP error to `throw`.<br>Built with a simple and discoverable API surface, highly **typed**, with [augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation) in mind.
 
 ## Get started

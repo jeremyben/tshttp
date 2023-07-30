@@ -1,8 +1,10 @@
 # tshttp 🧱
 
-_Low-Level_ TypeScript HTTP-related Modules. Inspired by [jshttp](https://jshttp.github.io/).
+> [!WARNING]  
+> This repo and its packages are deprecated. Please head to its successor: **[@reflet/http](https://github.com/jeremyben/reflet/tree/master/http)**
 
-## Modules
+_Low-Level_ TypeScript HTTP-related Modules.
+
 
 ### [@tshttp/status](./status)
 
@@ -12,8 +14,6 @@ import { Status } from '@tshttp/status'
 res.status(Status.Created)
 ```
 
----
-
 ### [@tshttp/header](./header)
 
 ```ts
@@ -21,8 +21,6 @@ import { ResponseHeader } from '@tshttp/header'
 
 res.set(ResponseHeader.ContentType, 'application/json')
 ```
-
----
 
 ### [@tshttp/error](./error)
 
